@@ -1,5 +1,11 @@
+<?php
+require_once  __DIR__ . "/settings/session_start.php";
+$errors = $_SESSION['errors'] ?? [];
+unset($_SESSION['errors']);
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="assets/css/dashboard.css">
 </head>
+
 <body style="background: #0f172a;">
 
   <div class="container">
@@ -17,10 +24,22 @@
         <span class="badge bg-dark border text-white px-3 py-1">ADMINISTRATIVE CONSOLE</span>
       </div>
 
-      <form action="index.html" method="GET">
+      <?php if (!empty($errors)) { ?>
+        <div class="alert alert-danger">
+          <ul>
+            <?php foreach ($errors as $error) { ?>
+              <li><?= $error ?></li>
+            <?php } ?>
+          </ul>
+
+        </div>
+
+      <?php } ?>
+
+      <form action="./actions/login_action.php" method="POST">
         <div class="mb-3">
           <label class="form-label small fw-bold text-uppercase">Admin Email</label>
-          <input type="email" class="form-control" value="admin@novaformshoes.pk" required>
+          <input type="email" name="email" class="form-control" required>
         </div>
 
         <div class="mb-3">
@@ -28,7 +47,7 @@
             <label class="form-label small fw-bold text-uppercase">Password</label>
             <a href="forgot-password.html" class="small text-muted">Forgot?</a>
           </div>
-          <input type="password" class="form-control" value="admin123" required>
+          <input type="password" name="password" class="form-control" required>
         </div>
 
         <div class="form-check mb-4">
@@ -39,7 +58,7 @@
         <button type="submit" class="btn btn-dark w-100 py-2 mb-3 fw-bold">Sign In To Dashboard</button>
 
         <div class="d-flex justify-content-between small text-muted">
-          <a href="register.html" class="text-muted">Register New Staff</a>
+          <a href="register.php" class="text-muted">Register New Staff</a>
           <a href="../front-site/index.html" class="text-muted">Back To Storefront &rarr;</a>
         </div>
       </form>
@@ -47,4 +66,5 @@
   </div>
 
 </body>
+
 </html>
