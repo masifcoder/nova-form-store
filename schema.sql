@@ -240,6 +240,22 @@ CREATE TABLE `store_settings` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- ------------------------------------------------------------------------------
+-- 19. Website Content & Editorial CMS Settings
+-- ------------------------------------------------------------------------------
+DROP TABLE IF EXISTS `cms_settings`;
+CREATE TABLE `cms_settings` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `hero_headline` VARCHAR(255) NOT NULL,
+  `hero_subtitle` VARCHAR(255) NULL,
+  `hero_lead` TEXT NULL,
+  `promo_headline` VARCHAR(255) NULL,
+  `promo_btn_text` VARCHAR(100) NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 
 -- ==============================================================================
 -- INITIAL SEED DATA (Synchronized with NOVA FORM Prototype)
