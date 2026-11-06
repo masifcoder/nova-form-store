@@ -1,6 +1,25 @@
 <?php
 require_once __DIR__ . "/settings/session_start.php";
 require_once __DIR__ . "/settings/auth_check.php";
+require_once __DIR__ . "/settings/db.php";
+
+$errors = $_SESSION['errors'] ?? [];
+unset($_SESSION['errors']);
+
+$success = $_SESSION['success'] ?? '';
+unset($_SESSION['success']);
+
+// Fetch all settings from store_settings table
+$query = "SELECT * FROM store_settings";
+$result = mysqli_query($conn, $query);
+$settings_rows = ($result) ? mysqli_fetch_all($result, MYSQLI_ASSOC) : [];
+
+$settings = [];
+if (!empty($settings_rows)) {
+    foreach ($settings_rows as $row) {
+        $settings[$row['setting_key']] = $row['setting_value'];
+    }
+}
 ?>
 
 <?php require_once __DIR__ . "/partials/header.php" ?>
@@ -42,7 +61,7 @@ require_once __DIR__ . "/settings/auth_check.php";
                 <h6 class="dropdown-header text-uppercase small fw-bold">Recent Alerts</h6>
               </li>
               <li><a class="dropdown-item small py-2" href="orders.html"><i class="bi bi-bag-check text-success me-2"></i> New Order #NF-88291 received (PKR 14,999)</a></li>
-              <li><a class="dropdown-item small py-2" href="inventory.html"><i class="bi bi-exclamation-triangle text-warning me-2"></i> Low stock: Sahara Suede Chukka (9 left)</a></li>
+              <li><a class="dropdown-item small py-2" href="inventory.php"><i class="bi bi-exclamation-triangle text-warning me-2"></i> Low stock alerts</a></li>
               <li><a class="dropdown-item small py-2" href="reviews.html"><i class="bi bi-star text-primary me-2"></i> New 5-star review pending approval</a></li>
               <li>
                 <hr class="dropdown-divider">
@@ -61,11 +80,11 @@ require_once __DIR__ . "/settings/auth_check.php";
             </a>
             <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
               <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person me-2 text-muted"></i> My Profile</a></li>
-              <li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear me-2 text-muted"></i> Store Settings</a></li>
+              <li><a class="dropdown-item" href="settings.php"><i class="bi bi-gear me-2 text-muted"></i> Store Settings</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item text-danger" href="login.html"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
+              <li><a class="dropdown-item text-danger" href="actions/logout_action.php"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
             </ul>
           </div>
         </div>
@@ -74,14 +93,32 @@ require_once __DIR__ . "/settings/auth_check.php";
 
       <main class="admin-content">
 
+        <?php if (!empty($errors)) : ?>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <ul class="mb-0 ps-3">
+              <?php foreach ($errors as $error) : ?>
+                <li><?= htmlspecialchars($error) ?></li>
+              <?php endforeach; ?>
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <?php endif; ?>
+
+        <?php if (!empty($success)) : ?>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle me-2"></i><?= htmlspecialchars($success) ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <?php endif; ?>
+
         <div class="d-flex justify-content-between align-items-center mb-4">
           <div>
-            <h1 class="page-title">Storefront Configuration & Logistics Settings</h1>
-            <p class="page-subtitle">Configure Pakistani delivery thresholds, store contact details, and policies.</p>
+            <h1 class="page-title">Storefront Configuration &amp; Logistics Settings</h1>
+            <p class="page-subtitle">Configure delivery fees, contact information, policies, and store identity in <code>store_settings</code>.</p>
           </div>
         </div>
 
-        <form class="admin-demo-form" data-success-msg="Store configuration settings successfully updated!">
+        <form method="POST" action="actions/save_settings_action.php">
           <div class="row g-4">
 
             <div class="col-lg-8">
@@ -94,20 +131,20 @@ require_once __DIR__ . "/settings/auth_check.php";
                 <div class="admin-card-body">
                   <div class="row g-3">
                     <div class="col-md-6">
-                      <label class="form-label small fw-bold">Brand Name</label>
-                      <input type="text" class="form-control" value="NOVA FORM">
+                      <label class="form-label small fw-bold">Brand Name *</label>
+                      <input type="text" name="brand_name" class="form-control" value="<?= htmlspecialchars($settings['brand_name'] ?? 'NOVA FORM') ?>" required>
                     </div>
                     <div class="col-md-6">
                       <label class="form-label small fw-bold">Helpline Phone</label>
-                      <input type="text" class="form-control" value="+92 300 8472911">
+                      <input type="text" name="helpline_phone" class="form-control" value="<?= htmlspecialchars($settings['helpline_phone'] ?? '+92 300 8472911') ?>">
                     </div>
                     <div class="col-md-6">
                       <label class="form-label small fw-bold">Support Email</label>
-                      <input type="email" class="form-control" value="concierge@novaformshoes.pk">
+                      <input type="email" name="support_email" class="form-control" value="<?= htmlspecialchars($settings['support_email'] ?? 'concierge@novaformshoes.pk') ?>">
                     </div>
                     <div class="col-md-6">
-                      <label class="form-label small fw-bold">Currency & Timezone</label>
-                      <input type="text" class="form-control bg-light" value="PKR (Pakistan Standard Time - PKT)" readonly>
+                      <label class="form-label small fw-bold">Currency &amp; Timezone</label>
+                      <input type="text" name="currency_timezone" class="form-control" value="<?= htmlspecialchars($settings['currency_timezone'] ?? 'PKR (Pakistan Standard Time - PKT)') ?>">
                     </div>
                   </div>
                 </div>
@@ -116,21 +153,21 @@ require_once __DIR__ . "/settings/auth_check.php";
               <!-- Logistics Settings -->
               <div class="admin-card mb-4">
                 <div class="admin-card-header">
-                  <h5 class="admin-card-title">Delivery Fees & Nationwide Logistics</h5>
+                  <h5 class="admin-card-title">Delivery Fees &amp; Nationwide Logistics</h5>
                 </div>
                 <div class="admin-card-body">
                   <div class="row g-3">
                     <div class="col-md-6">
-                      <label class="form-label small fw-bold">Standard Delivery Fee (PKR)</label>
-                      <input type="number" class="form-control" value="250">
+                      <label class="form-label small fw-bold">Standard Delivery Fee (PKR) *</label>
+                      <input type="number" step="0.01" name="standard_delivery_fee" class="form-control" value="<?= htmlspecialchars($settings['standard_delivery_fee'] ?? '250') ?>" required>
                     </div>
                     <div class="col-md-6">
-                      <label class="form-label small fw-bold">Free Delivery Threshold (PKR)</label>
-                      <input type="number" class="form-control" value="10000">
+                      <label class="form-label small fw-bold">Free Delivery Threshold (PKR) *</label>
+                      <input type="number" step="0.01" name="free_delivery_threshold" class="form-control" value="<?= htmlspecialchars($settings['free_delivery_threshold'] ?? '10000') ?>" required>
                     </div>
                     <div class="col-12">
                       <label class="form-label small fw-bold">Delivery Estimate Notice</label>
-                      <input type="text" class="form-control" value="2-3 business days for major cities (Lahore, Karachi, Islamabad); 3-5 days nationwide.">
+                      <input type="text" name="delivery_estimate_notice" class="form-control" value="<?= htmlspecialchars($settings['delivery_estimate_notice'] ?? '2-3 business days for major cities (Lahore, Karachi, Islamabad); 3-5 days nationwide.') ?>">
                     </div>
                   </div>
                 </div>
@@ -139,33 +176,56 @@ require_once __DIR__ . "/settings/auth_check.php";
               <!-- Policies -->
               <div class="admin-card mb-4">
                 <div class="admin-card-header">
-                  <h5 class="admin-card-title">Exchange & Warranty Policies</h5>
+                  <h5 class="admin-card-title">Exchange &amp; Warranty Policies</h5>
                 </div>
                 <div class="admin-card-body">
                   <div class="mb-3">
                     <label class="form-label small fw-bold">Exchange Period</label>
-                    <input type="text" class="form-control" value="15-Day Complimentary Doorstep Exchange for sizing adjustment.">
+                    <input type="text" name="exchange_policy" class="form-control" value="<?= htmlspecialchars($settings['exchange_policy'] ?? '15-Day Complimentary Doorstep Exchange for sizing adjustment.') ?>">
                   </div>
                 </div>
               </div>
 
-              <button type="submit" class="btn btn-dark px-4 py-2">Save Settings</button>
+              <button type="submit" class="btn btn-dark px-4 py-2">
+                <i class="bi bi-check2-circle me-1"></i> Save Settings
+              </button>
 
             </div>
 
             <div class="col-lg-4">
-              <div class="admin-card">
+              <div class="admin-card mb-4">
                 <div class="admin-card-header">
-                  <h5 class="admin-card-title">Quick Status</h5>
+                  <h5 class="admin-card-title">Operations &amp; Security</h5>
                 </div>
-                <div class="admin-card-body small">
-                  <div class="d-flex justify-content-between mb-2">
-                    <span class="text-muted">Primary Gateway:</span>
-                    <strong>Cash on Delivery (Active)</strong>
+                <div class="admin-card-body">
+                  <div class="mb-3">
+                    <label class="form-label small fw-bold">Primary Payment Gateway</label>
+                    <select name="primary_gateway" class="form-select form-select-sm">
+                      <option value="Cash on Delivery (Active)" <?= (($settings['primary_gateway'] ?? '') === 'Cash on Delivery (Active)' || empty($settings['primary_gateway'])) ? 'selected' : '' ?>>Cash on Delivery (Active)</option>
+                      <option value="Online Card / Digital Wallets" <?= (($settings['primary_gateway'] ?? '') === 'Online Card / Digital Wallets') ? 'selected' : '' ?>>Online Card / Digital Wallets</option>
+                      <option value="Direct Bank Transfer" <?= (($settings['primary_gateway'] ?? '') === 'Direct Bank Transfer') ? 'selected' : '' ?>>Direct Bank Transfer</option>
+                    </select>
                   </div>
-                  <div class="d-flex justify-content-between mb-2">
-                    <span class="text-muted">SSL Encryption:</span>
-                    <strong class="text-success">Enabled</strong>
+
+                  <div class="mb-3">
+                    <label class="form-label small fw-bold">SSL Encryption Status</label>
+                    <select name="ssl_status" class="form-select form-select-sm">
+                      <option value="Enabled" <?= (($settings['ssl_status'] ?? '') === 'Enabled' || empty($settings['ssl_status'])) ? 'selected' : '' ?>>Enabled</option>
+                      <option value="Disabled" <?= (($settings['ssl_status'] ?? '') === 'Disabled') ? 'selected' : '' ?>>Disabled</option>
+                    </select>
+                  </div>
+
+                  <hr class="my-3">
+
+                  <div class="small text-muted">
+                    <div class="d-flex justify-content-between mb-1">
+                      <span>Database Table:</span>
+                      <code>store_settings</code>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <span>Total Active Settings:</span>
+                      <strong class="text-dark"><?= count($settings) ?> keys</strong>
+                    </div>
                   </div>
                 </div>
               </div>
