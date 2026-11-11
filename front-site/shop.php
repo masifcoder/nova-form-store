@@ -1,190 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop All Men's Footwear | NOVA FORM Pakistan</title>
-  <meta name="description" content="Explore NOVA FORM's complete footwear catalogue. Oxfords, Penny Loafers, Chelsea Boots, Sneakers, and Traditional Sandals.">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
-</head>
-<body>
+﻿<?php
+$pageTitle = "Shop All Men's Footwear | NOVA FORM Pakistan";
+$pageDescription = "Explore NOVA FORM's complete footwear catalogue. Oxfords, Penny Loafers, Chelsea Boots, Sneakers, and Traditional Sandals.";
+require_once __DIR__ . '/partials/header.php';
+require_once __DIR__ . '/partials/navbar.php';
+?>
 
-  
-  <!-- Top Announcement Bar -->
-  <div class="announcement-bar">
-    <div class="container d-flex justify-content-between align-items-center">
-      <div class="d-none d-md-flex align-items-center gap-3">
-        <span><i class="bi bi-shield-check text-warning me-1"></i> 100% Genuine Full-Grain Leather</span>
-        <span class="text-white-50">|</span>
-        <span><i class="bi bi-truck text-warning me-1"></i> Cash on Delivery Across Pakistan</span>
-      </div>
-      <div class="mx-auto mx-md-0 text-center">
-        <span>Complimentary Express Delivery on orders above PKR 10,000 <span class="badge-pak ms-1">PKR</span></span>
-      </div>
-      <div class="d-none d-lg-flex align-items-center gap-3">
-        <a href="size-guide.html" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-rulers me-1"></i> Size Guide</a>
-        <a href="contact.html" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-telephone me-1"></i> Helpline</a>
-        <a href="../dashboard/index.html" class="badge bg-secondary text-white text-decoration-none px-2 py-1"><i class="bi bi-speedometer2 me-1"></i> Admin Portal</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main Navigation -->
-  <header class="nova-navbar">
-    <div class="container">
-      <div class="d-flex align-items-center justify-content-between">
-        
-        <!-- Mobile Menu Toggle Button -->
-        <button class="navbar-toggler d-lg-none border-0 p-0 text-dark me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNavOffcanvas" aria-controls="mobileNavOffcanvas">
-          <i class="bi bi-list fs-2"></i>
-        </button>
-
-        <!-- Brand Identity -->
-        <a href="index.html" class="brand-logo text-decoration-none me-4">
-          NOVA FORM<span class="dot"></span>
-        </a>
-
-        <!-- Desktop Navigation Links -->
-        <nav class="d-none d-lg-flex align-items-center gap-1">
-          <a href="index.html" class="nav-link-nova ">Home</a>
-          <a href="shop.html" class="nav-link-nova active">Shop All</a>
-          
-          <div class="dropdown">
-            <a href="category.html" class="nav-link-nova dropdown-toggle " data-bs-toggle="dropdown" aria-expanded="false">
-              Categories
-            </a>
-            <ul class="dropdown-menu dropdown-menu-nova shadow-sm">
-              <li><a class="dropdown-item" href="category.html"><i class="bi bi-suit-club me-2 text-muted"></i> Formal Shoes</a></li>
-              <li><a class="dropdown-item" href="category.html"><i class="bi bi-layers me-2 text-muted"></i> Luxury Loafers</a></li>
-              <li><a class="dropdown-item" href="category.html"><i class="bi bi-compass me-2 text-muted"></i> Casual Shoes</a></li>
-              <li><a class="dropdown-item" href="category.html"><i class="bi bi-lightning-charge me-2 text-muted"></i> Sneakers & Trainers</a></li>
-              <li><a class="dropdown-item" href="category.html"><i class="bi bi-sun me-2 text-muted"></i> Leather Sandals</a></li>
-              <li><a class="dropdown-item" href="category.html"><i class="bi bi-shield-check me-2 text-muted"></i> Traditional Peshawari</a></li>
-              <li><a class="dropdown-item" href="category.html"><i class="bi bi-gem me-2 text-muted"></i> Chelsea & Boots</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item text-danger fw-semibold" href="shop.html"><i class="bi bi-tag me-2"></i> View Special Offers</a></li>
-            </ul>
-          </div>
-
-          <a href="category.html" class="nav-link-nova">Formal</a>
-          <a href="category.html" class="nav-link-nova">Loafers</a>
-          <a href="category.html" class="nav-link-nova">Traditional</a>
-          <a href="about.html" class="nav-link-nova ">About</a>
-          <a href="shop.html" class="nav-link-nova sale-link">Sale</a>
-        </nav>
-
-        <!-- Action Icons -->
-        <div class="d-flex align-items-center gap-1">
-          <button class="nav-action-btn" data-bs-toggle="modal" data-bs-target="#searchModal" title="Search catalog">
-            <i class="bi bi-search"></i>
-          </button>
-          
-          <div class="dropdown">
-            <button class="nav-action-btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" title="Account">
-              <i class="bi bi-person"></i>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-nova shadow-sm">
-              <li><h6 class="dropdown-header text-uppercase text-muted small fw-bold">Customer Portal</h6></li>
-              <li><a class="dropdown-item" href="account.html"><i class="bi bi-person-circle me-2 text-muted"></i> My Account</a></li>
-              <li><a class="dropdown-item" href="orders.html"><i class="bi bi-bag-check me-2 text-muted"></i> Order History</a></li>
-              <li><a class="dropdown-item" href="wishlist.html"><i class="bi bi-heart me-2 text-muted"></i> Wishlist</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="login.html"><i class="bi bi-box-arrow-in-right me-2 text-muted"></i> Sign In</a></li>
-              <li><a class="dropdown-item" href="register.html"><i class="bi bi-person-plus me-2 text-muted"></i> Create Account</a></li>
-            </ul>
-          </div>
-
-          <a href="wishlist.html" class="nav-action-btn" title="Saved Wishlist">
-            <i class="bi bi-heart"></i>
-            <span class="nav-action-badge wishlist-count-badge">3</span>
-          </a>
-
-          <a href="cart.html" class="nav-action-btn" title="Shopping Bag">
-            <i class="bi bi-bag"></i>
-            <span class="nav-action-badge cart-count-badge">2</span>
-          </a>
-        </div>
-
-      </div>
-    </div>
-  </header>
-
-  <!-- Mobile Offcanvas Menu -->
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileNavOffcanvas" aria-labelledby="mobileNavLabel">
-    <div class="offcanvas-header border-bottom">
-      <h5 class="offcanvas-title brand-logo" id="mobileNavLabel">NOVA FORM<span class="dot"></span></h5>
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body p-4">
-      <div class="mb-4">
-        <form action="shop.html" method="GET">
-          <div class="input-group">
-            <input type="text" name="q" class="form-control form-control-nova" placeholder="Search shoes, loafers, boots...">
-            <button class="btn btn-dark" type="submit"><i class="bi bi-search"></i></button>
-          </div>
-        </form>
-      </div>
-
-      <ul class="list-unstyled mb-4">
-        <li class="mb-2"><a href="index.html" class="d-block py-2 text-decoration-none fw-semibold border-bottom">Home</a></li>
-        <li class="mb-2"><a href="shop.html" class="d-block py-2 text-decoration-none fw-semibold border-bottom">Shop All Footwear</a></li>
-        <li class="mb-2"><a href="category.html" class="d-block py-2 text-decoration-none fw-semibold border-bottom">Formal Shoes</a></li>
-        <li class="mb-2"><a href="category.html" class="d-block py-2 text-decoration-none fw-semibold border-bottom">Loafers & Slip-ons</a></li>
-        <li class="mb-2"><a href="category.html" class="d-block py-2 text-decoration-none fw-semibold border-bottom">Traditional Peshawari</a></li>
-        <li class="mb-2"><a href="category.html" class="d-block py-2 text-decoration-none fw-semibold border-bottom">Sneakers & Trainers</a></li>
-        <li class="mb-2"><a href="size-guide.html" class="d-block py-2 text-decoration-none fw-semibold border-bottom">Shoe Size Guide (EU 39-46)</a></li>
-        <li class="mb-2"><a href="about.html" class="d-block py-2 text-decoration-none fw-semibold border-bottom">About NOVA FORM</a></li>
-        <li class="mb-2"><a href="contact.html" class="d-block py-2 text-decoration-none fw-semibold border-bottom">Contact & Stores</a></li>
-      </ul>
-
-      <div class="border-top pt-3">
-        <div class="d-flex flex-column gap-2">
-          <a href="account.html" class="btn btn-outline-dark w-100 py-2"><i class="bi bi-person me-2"></i> Customer Account</a>
-          <a href="../dashboard/index.html" class="btn btn-dark w-100 py-2"><i class="bi bi-shield-lock me-2"></i> Admin Dashboard</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Search Modal -->
-  <div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content border-0 shadow-lg">
-        <div class="modal-body p-4">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h6 class="text-uppercase fw-bold text-muted small mb-0">Search NOVA FORM Catalog</h6>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <form action="shop.html" method="GET">
-            <div class="input-group input-group-lg border rounded-1 overflow-hidden">
-              <span class="input-group-text bg-white border-0"><i class="bi bi-search text-muted"></i></span>
-              <input type="text" name="search" class="form-control border-0 shadow-none ps-0" placeholder="Type shoe style (e.g., Oxford, Loafer, Chelsea, Chappal)..." autofocus>
-              <button class="btn btn-nova-dark rounded-0 px-4" type="submit">Search</button>
-            </div>
-          </form>
-          <div class="mt-3">
-            <span class="text-muted small me-2">Trending Searches:</span>
-            <a href="shop.html" class="badge bg-light text-dark text-decoration-none me-1">Oxford Shoes</a>
-            <a href="shop.html" class="badge bg-light text-dark text-decoration-none me-1">Penny Loafers</a>
-            <a href="shop.html" class="badge bg-light text-dark text-decoration-none me-1">Kaptaan Chappal</a>
-            <a href="shop.html" class="badge bg-light text-dark text-decoration-none">Chelsea Boots</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-
-  <main class="py-4">
+<main class="py-4">
     <div class="container">
       
       <!-- Breadcrumb -->
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-nova">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
           <li class="breadcrumb-item active" aria-current="page">Shop All Footwear</li>
         </ol>
       </nav>
@@ -211,7 +38,7 @@
           <div class="p-3 bg-white border rounded-1 shadow-sm shop-sidebar">
             <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
               <h5 class="fs-6 fw-bold text-uppercase mb-0"><i class="bi bi-funnel me-1"></i> Refine Catalog</h5>
-              <a href="shop.html" class="text-muted small text-decoration-underline">Reset</a>
+              <a href="shop.php" class="text-muted small text-decoration-underline">Reset</a>
             </div>
 
             <!-- Category Filter -->
@@ -326,7 +153,7 @@
             <div class="mb-4">
               <div class="d-flex justify-content-between align-items-center mb-2">
                 <label class="form-label-nova mb-0">Shoe Size (EU)</label>
-                <a href="size-guide.html" class="small text-warning text-decoration-none">Guide</a>
+                <a href="size-guide.php" class="small text-warning text-decoration-none">Guide</a>
               </div>
               <div class="d-flex flex-wrap gap-1">
                 
@@ -433,7 +260,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1001">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?q=80&w=800&auto=format&fit=crop" alt="Regal Wholecut Oxford" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -445,7 +272,7 @@
     <div class="product-info">
       <div class="product-category">Formal Shoes</div>
       <h3 class="product-name">
-        <a href="product-details.html">Regal Wholecut Oxford</a>
+        <a href="product-details.php">Regal Wholecut Oxford</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -478,7 +305,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1002">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1533867617858-e7b97e060509?q=80&w=800&auto=format&fit=crop" alt="Sienna Burnished Penny Loafer" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -490,7 +317,7 @@
     <div class="product-info">
       <div class="product-category">Loafers</div>
       <h3 class="product-name">
-        <a href="product-details.html">Sienna Burnished Penny Loafer</a>
+        <a href="product-details.php">Sienna Burnished Penny Loafer</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -523,7 +350,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1003">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=800&auto=format&fit=crop" alt="Kensington Braided Tassel Loafer" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -535,7 +362,7 @@
     <div class="product-info">
       <div class="product-category">Loafers</div>
       <h3 class="product-name">
-        <a href="product-details.html">Kensington Braided Tassel Loafer</a>
+        <a href="product-details.php">Kensington Braided Tassel Loafer</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -568,7 +395,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1004">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=800&auto=format&fit=crop" alt="Mayfair Double Monk Strap" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -580,7 +407,7 @@
     <div class="product-info">
       <div class="product-category">Formal Shoes</div>
       <h3 class="product-name">
-        <a href="product-details.html">Mayfair Double Monk Strap</a>
+        <a href="product-details.php">Mayfair Double Monk Strap</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -613,7 +440,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1005">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=800&auto=format&fit=crop" alt="Khyber Heritage Peshawari Chappal" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -625,7 +452,7 @@
     <div class="product-info">
       <div class="product-category">Traditional Footwear</div>
       <h3 class="product-name">
-        <a href="product-details.html">Khyber Heritage Peshawari Chappal</a>
+        <a href="product-details.php">Khyber Heritage Peshawari Chappal</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -658,7 +485,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1006">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1638247025967-b4e38f787b76?q=80&w=800&auto=format&fit=crop" alt="Highland Burnished Chelsea Boot" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -670,7 +497,7 @@
     <div class="product-info">
       <div class="product-category">Boots</div>
       <h3 class="product-name">
-        <a href="product-details.html">Highland Burnished Chelsea Boot</a>
+        <a href="product-details.php">Highland Burnished Chelsea Boot</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -703,7 +530,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1007">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=800&auto=format&fit=crop" alt="Veloce Minimalist Court Sneaker" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -715,7 +542,7 @@
     <div class="product-info">
       <div class="product-category">Sneakers / Sports Shoes</div>
       <h3 class="product-name">
-        <a href="product-details.html">Veloce Minimalist Court Sneaker</a>
+        <a href="product-details.php">Veloce Minimalist Court Sneaker</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -748,7 +575,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1008">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1603808033192-082d6919d3e1?q=80&w=800&auto=format&fit=crop" alt="Riviera Cross-Strap Leather Sandal" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -760,7 +587,7 @@
     <div class="product-info">
       <div class="product-category">Sandals</div>
       <h3 class="product-name">
-        <a href="product-details.html">Riviera Cross-Strap Leather Sandal</a>
+        <a href="product-details.php">Riviera Cross-Strap Leather Sandal</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -793,7 +620,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1009">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1582898967732-7235a8e0f93a?q=80&w=800&auto=format&fit=crop" alt="Westminster Wingtip Derby Brogue" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -805,7 +632,7 @@
     <div class="product-info">
       <div class="product-category">Formal Shoes</div>
       <h3 class="product-name">
-        <a href="product-details.html">Westminster Wingtip Derby Brogue</a>
+        <a href="product-details.php">Westminster Wingtip Derby Brogue</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -838,7 +665,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1010">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=800&auto=format&fit=crop" alt="Amalfi Velour Suede Loafer" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -850,7 +677,7 @@
     <div class="product-info">
       <div class="product-category">Loafers</div>
       <h3 class="product-name">
-        <a href="product-details.html">Amalfi Velour Suede Loafer</a>
+        <a href="product-details.php">Amalfi Velour Suede Loafer</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -883,7 +710,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1011">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1520639888713-7851133b1ed0?q=80&w=800&auto=format&fit=crop" alt="Sahara Sand Suede Chukka Boot" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -895,7 +722,7 @@
     <div class="product-info">
       <div class="product-category">Boots</div>
       <h3 class="product-name">
-        <a href="product-details.html">Sahara Sand Suede Chukka Boot</a>
+        <a href="product-details.php">Sahara Sand Suede Chukka Boot</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -928,7 +755,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1012">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?q=80&w=800&auto=format&fit=crop" alt="Monaco Pebble-Grain Driving Shoe" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -940,7 +767,7 @@
     <div class="product-info">
       <div class="product-category">Casual Shoes</div>
       <h3 class="product-name">
-        <a href="product-details.html">Monaco Pebble-Grain Driving Shoe</a>
+        <a href="product-details.php">Monaco Pebble-Grain Driving Shoe</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -973,7 +800,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1013">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=800&auto=format&fit=crop" alt="Waziristan Kaptaan Chappal" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -985,7 +812,7 @@
     <div class="product-info">
       <div class="product-category">Traditional Footwear</div>
       <h3 class="product-name">
-        <a href="product-details.html">Waziristan Kaptaan Chappal</a>
+        <a href="product-details.php">Waziristan Kaptaan Chappal</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -1018,7 +845,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1014">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?q=80&w=800&auto=format&fit=crop" alt="Edinburgh Plain Toe Derby" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -1030,7 +857,7 @@
     <div class="product-info">
       <div class="product-category">Formal Shoes</div>
       <h3 class="product-name">
-        <a href="product-details.html">Edinburgh Plain Toe Derby</a>
+        <a href="product-details.php">Edinburgh Plain Toe Derby</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -1063,7 +890,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1015">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop" alt="Aerolight Knit Lifestyle Trainer" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -1075,7 +902,7 @@
     <div class="product-info">
       <div class="product-category">Sneakers / Sports Shoes</div>
       <h3 class="product-name">
-        <a href="product-details.html">Aerolight Knit Lifestyle Trainer</a>
+        <a href="product-details.php">Aerolight Knit Lifestyle Trainer</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -1108,7 +935,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1016">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?q=80&w=800&auto=format&fit=crop" alt="Savoy Quilted Velvet Mule Slipper" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -1120,7 +947,7 @@
     <div class="product-info">
       <div class="product-category">Slippers</div>
       <h3 class="product-name">
-        <a href="product-details.html">Savoy Quilted Velvet Mule Slipper</a>
+        <a href="product-details.php">Savoy Quilted Velvet Mule Slipper</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -1153,7 +980,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1017">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1603808033192-082d6919d3e1?q=80&w=800&auto=format&fit=crop" alt="Balochi Traditional Embroidered Sandal" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -1165,7 +992,7 @@
     <div class="product-info">
       <div class="product-category">Traditional Footwear</div>
       <h3 class="product-name">
-        <a href="product-details.html">Balochi Traditional Embroidered Sandal</a>
+        <a href="product-details.php">Balochi Traditional Embroidered Sandal</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -1198,7 +1025,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1018">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=800&auto=format&fit=crop" alt="Himalayan Rugged Combat Boot" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -1210,7 +1037,7 @@
     <div class="product-info">
       <div class="product-category">Boots</div>
       <h3 class="product-name">
-        <a href="product-details.html">Himalayan Rugged Combat Boot</a>
+        <a href="product-details.php">Himalayan Rugged Combat Boot</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -1243,7 +1070,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1019">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=800&auto=format&fit=crop" alt="Verona Perforated Derby Sneaker" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -1255,7 +1082,7 @@
     <div class="product-info">
       <div class="product-category">Casual Shoes</div>
       <h3 class="product-name">
-        <a href="product-details.html">Verona Perforated Derby Sneaker</a>
+        <a href="product-details.php">Verona Perforated Derby Sneaker</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -1288,7 +1115,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1020">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1603808033192-082d6919d3e1?q=80&w=800&auto=format&fit=crop" alt="Atlas Ergonomic Comfort Slide" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -1300,7 +1127,7 @@
     <div class="product-info">
       <div class="product-category">Sandals</div>
       <h3 class="product-name">
-        <a href="product-details.html">Atlas Ergonomic Comfort Slide</a>
+        <a href="product-details.php">Atlas Ergonomic Comfort Slide</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -1333,7 +1160,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1021">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?q=80&w=800&auto=format&fit=crop" alt="Carlton Suede Outdoor Slipper" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -1345,7 +1172,7 @@
     <div class="product-info">
       <div class="product-category">Slippers</div>
       <h3 class="product-name">
-        <a href="product-details.html">Carlton Suede Outdoor Slipper</a>
+        <a href="product-details.php">Carlton Suede Outdoor Slipper</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -1378,7 +1205,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1022">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=800&auto=format&fit=crop" alt="Milano Retro High-Top Sneaker" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -1390,7 +1217,7 @@
     <div class="product-info">
       <div class="product-category">Sneakers / Sports Shoes</div>
       <h3 class="product-name">
-        <a href="product-details.html">Milano Retro High-Top Sneaker</a>
+        <a href="product-details.php">Milano Retro High-Top Sneaker</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -1423,7 +1250,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1023">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1533867617858-e7b97e060509?q=80&w=800&auto=format&fit=crop" alt="Portofino Woven Leather Penny Loafer" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -1435,7 +1262,7 @@
     <div class="product-info">
       <div class="product-category">Loafers</div>
       <h3 class="product-name">
-        <a href="product-details.html">Portofino Woven Leather Penny Loafer</a>
+        <a href="product-details.php">Portofino Woven Leather Penny Loafer</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -1468,7 +1295,7 @@
       <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1024">
         <i class="bi bi-heart"></i>
       </button>
-      <a href="product-details.html">
+      <a href="product-details.php">
         <img src="https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?q=80&w=800&auto=format&fit=crop" alt="Cambridge Cap-Toe Semi-Brogue" loading="lazy">
       </a>
       <div class="product-quick-actions">
@@ -1480,7 +1307,7 @@
     <div class="product-info">
       <div class="product-category">Formal Shoes</div>
       <h3 class="product-name">
-        <a href="product-details.html">Cambridge Cap-Toe Semi-Brogue</a>
+        <a href="product-details.php">Cambridge Cap-Toe Semi-Brogue</a>
       </h3>
       <div class="product-rating">
         <i class="bi bi-star-fill"></i>
@@ -1522,98 +1349,4 @@
     </div>
   </main>
 
-  
-  <!-- Shared Luxe Footer -->
-  <footer class="nova-footer">
-    <div class="container">
-      <div class="row g-4 mb-5">
-        
-        <!-- Brand Col -->
-        <div class="col-lg-4 col-md-6">
-          <a href="index.html" class="footer-logo text-decoration-none">
-            NOVA FORM<span class="text-warning">.</span>
-          </a>
-          <p class="text-white-50 small pe-lg-4 mb-4" style="line-height: 1.8;">
-            NOVA FORM is a contemporary Pakistani luxury footwear atelier. Rooted in artisanal shoemaking heritage, we craft refined men's dress shoes, Goodyear-welted oxfords, supple loafers, and authentic traditional footwear built for timeless elegance.
-          </p>
-          <div class="footer-social-links">
-            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-            <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-          </div>
-        </div>
-
-        <!-- Footwear Collections -->
-        <div class="col-lg-2 col-md-6 col-6">
-          <h4 class="footer-heading">Collections</h4>
-          <ul class="footer-links">
-            <li><a href="category.html">Formal Oxfords</a></li>
-            <li><a href="category.html">Penny & Tassel Loafers</a></li>
-            <li><a href="category.html">Double Monk Straps</a></li>
-            <li><a href="category.html">Heritage Peshawari</a></li>
-            <li><a href="category.html">Chelsea Boots</a></li>
-            <li><a href="category.html">Minimalist Sneakers</a></li>
-            <li><a href="shop.html" class="text-warning">Seasonal Archive</a></li>
-          </ul>
-        </div>
-
-        <!-- Concierge & Care -->
-        <div class="col-lg-2 col-md-6 col-6">
-          <h4 class="footer-heading">Client Care</h4>
-          <ul class="footer-links">
-            <li><a href="size-guide.html">Shoe Size Guide</a></li>
-            <li><a href="orders.html">Track Your Order</a></li>
-            <li><a href="contact.html">Store Ateliers</a></li>
-            <li><a href="about.html">Our Craftsmanship</a></li>
-            <li><a href="contact.html">Exchange & Returns</a></li>
-            <li><a href="contact.html">Concierge Service</a></li>
-            <li><a href="../dashboard/login.html" class="text-muted"><i class="bi bi-shield-lock me-1"></i> Staff Login</a></li>
-          </ul>
-        </div>
-
-        <!-- Store Ateliers & Newsletter -->
-        <div class="col-lg-4 col-md-6">
-          <h4 class="footer-heading">Atelier Locations</h4>
-          <p class="text-white-50 small mb-2"><i class="bi bi-geo-alt text-warning me-2"></i> <strong>Lahore:</strong> MM Alam Road, Gulberg III</p>
-          <p class="text-white-50 small mb-2"><i class="bi bi-geo-alt text-warning me-2"></i> <strong>Karachi:</strong> Bukhari Commercial, DHA Phase VI</p>
-          <p class="text-white-50 small mb-4"><i class="bi bi-geo-alt text-warning me-2"></i> <strong>Islamabad:</strong> Beverly Centre, Blue Area</p>
-
-          <h5 class="text-white text-uppercase fs-6 fw-bold mb-2">Private Newsletter</h5>
-          <p class="text-white-50 small mb-2">Subscribe to receive early access to limited edition shoemaking runs.</p>
-          <form class="demo-newsletter-form">
-            <div class="input-group">
-              <input type="email" class="form-control form-control-sm rounded-0 border-secondary bg-dark text-white" placeholder="Enter your email address" required>
-              <button class="btn btn-warning rounded-0 px-3 text-dark fw-bold text-uppercase small" type="submit">Join</button>
-            </div>
-          </form>
-        </div>
-
-      </div>
-
-      <!-- Bottom Bar -->
-      <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-        <p class="mb-0 text-white-50">
-          &copy; 2026 NOVA FORM Footwear (Pvt) Ltd. All rights reserved. Registered in Pakistan.
-        </p>
-        <div class="d-flex align-items-center gap-3 text-white-50 small">
-          <span>Prices in Pakistani Rupee (PKR)</span>
-          <span>&bull;</span>
-          <a href="about.html" class="text-white-50 text-decoration-none">Terms</a>
-          <span>&bull;</span>
-          <a href="about.html" class="text-white-50 text-decoration-none">Privacy</a>
-          <span>&bull;</span>
-          <a href="../dashboard/index.html" class="text-warning text-decoration-none fw-semibold">Dashboard Demo</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Bootstrap 5 JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom Minimal Frontend Script -->
-  <script src="assets/js/main.js"></script>
-  
-
-</body>
-</html>
+<?php require_once __DIR__ . '/partials/footer.php'; ?>
