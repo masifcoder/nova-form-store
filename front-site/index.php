@@ -13,7 +13,7 @@ $result = mysqli_query($conn, $q);
 $categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 
-// load products
+// best seller products
 $q2 = "SELECT products.name, products.original_price_pkr, products.image_url, products.price_pkr,  categories.name as category_name FROM products
   INNER JOIN categories on products.category_id = categories.id
  WHERE products.status = 'Active' LIMIT 8";
@@ -21,10 +21,17 @@ $result2 = mysqli_query($conn, $q2);
 $best_sellers = mysqli_fetch_all($result2, MYSQLI_ASSOC);
 
 
+// new arrival products
+$q3 = "SELECT products.*, categories.name as category_name FROM products 
+     INNER JOIN categories on products.category_id = categories.id
+     WHERE products.status = 'Active' AND products.is_new = 1 LIMIT 4";
+
+$result3 = mysqli_query($conn, $q3);
+$new_arrivals = mysqli_fetch_all($result3, MYSQLI_ASSOC);
 
 
 // echo "<pre>";
-// print_r($best_sellers);
+// print_r($new_arrivals);
 // echo "</pre>";
 // exit;
 
@@ -197,187 +204,61 @@ $best_sellers = mysqli_fetch_all($result2, MYSQLI_ASSOC);
       </div>
 
       <div class="row g-3 g-md-4">
+        <?php foreach ($new_arrivals as $new) { ?>
+          <div class="col-lg-3 col-md-6 col-6 col-product-grid">
 
-        <div class="col-lg-3 col-md-6 col-6 col-product-grid">
-
-          <div class="product-card">
-            <div class="product-img-wrap">
-              <div class="product-badges">
-
-                <span class="badge-new">New</span>
-              </div>
-              <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1002">
-                <i class="bi bi-heart"></i>
-              </button>
-              <a href="product-details.php">
-                <img src="https://images.unsplash.com/photo-1533867617858-e7b97e060509?q=80&w=800&auto=format&fit=crop" alt="Sienna Burnished Penny Loafer" loading="lazy">
-              </a>
-              <div class="product-quick-actions">
-                <button class="quick-view-btn btn-quick-add" data-product-title="Sienna Burnished Penny Loafer">
-                  <i class="bi bi-bag-plus me-1"></i> Quick Add
+            <div class="product-card">
+              <div class="product-img-wrap">
+                <div class="product-badges">
+                  <?php if ($new['is_sale'] == 1) { ?>
+                    <span class="badge-sale">Sale</span>
+                  <?php } ?>
+                  <span class="badge-new">New</span>
+                </div>
+                <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1002">
+                  <i class="bi bi-heart"></i>
                 </button>
+                <a href="product-details.php">
+                  <img src="https://images.unsplash.com/photo-1533867617858-e7b97e060509?q=80&w=800&auto=format&fit=crop" alt="Sienna Burnished Penny Loafer" loading="lazy">
+                </a>
+                <div class="product-quick-actions">
+                  <button class="quick-view-btn btn-quick-add" data-product-title="Sienna Burnished Penny Loafer">
+                    <i class="bi bi-bag-plus me-1"></i> Quick Add
+                  </button>
+                </div>
+              </div>
+              <div class="product-info">
+                <div class="product-category"><?php echo $new['category_name'] ?></div>
+                <h3 class="product-name">
+                  <a href="product-details.php"><?php echo $new['name'] ?></a>
+                </h3>
+                <div class="product-rating">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <span class="count">(52)</span>
+                </div>
+                <div class="product-price-box">
+
+                  <?php if ($new['is_sale'] == 1) { ?>
+                    <span class="current-price">PKR <?php echo $new['price_pkr'] ?></span>
+                    <span class="original-price">PKR <?php echo $new['original_price_pkr'] ?></span>
+                  <?php } else { ?>
+                    <span class="current-price">PKR <?php echo $new['original_price_pkr'] ?></span>
+                  <?php } ?>
+
+
+                </div>
+                <div class="product-colors">
+                  <span class="color-dot" style="background-color: #633d1c;" title="Available Color"></span><span class="color-dot" style="background-color: #141414;" title="Available Color"></span><span class="color-dot" style="background-color: #8c5324;" title="Available Color"></span>
+                </div>
               </div>
             </div>
-            <div class="product-info">
-              <div class="product-category">Loafers</div>
-              <h3 class="product-name">
-                <a href="product-details.php">Sienna Burnished Penny Loafer</a>
-              </h3>
-              <div class="product-rating">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <span class="count">(52)</span>
-              </div>
-              <div class="product-price-box">
-                <span class="current-price">PKR 12,499</span>
-                <span class="original-price">PKR 14,000</span>
-              </div>
-              <div class="product-colors">
-                <span class="color-dot" style="background-color: #633d1c;" title="Available Color"></span><span class="color-dot" style="background-color: #141414;" title="Available Color"></span><span class="color-dot" style="background-color: #8c5324;" title="Available Color"></span>
-              </div>
-            </div>
+
           </div>
-
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-6 col-product-grid">
-
-          <div class="product-card">
-            <div class="product-img-wrap">
-              <div class="product-badges">
-
-                <span class="badge-new">New</span>
-              </div>
-              <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1005">
-                <i class="bi bi-heart"></i>
-              </button>
-              <a href="product-details.php">
-                <img src="https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=800&auto=format&fit=crop" alt="Khyber Heritage Peshawari Chappal" loading="lazy">
-              </a>
-              <div class="product-quick-actions">
-                <button class="quick-view-btn btn-quick-add" data-product-title="Khyber Heritage Peshawari Chappal">
-                  <i class="bi bi-bag-plus me-1"></i> Quick Add
-                </button>
-              </div>
-            </div>
-            <div class="product-info">
-              <div class="product-category">Traditional Footwear</div>
-              <h3 class="product-name">
-                <a href="product-details.php">Khyber Heritage Peshawari Chappal</a>
-              </h3>
-              <div class="product-rating">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <span class="count">(84)</span>
-              </div>
-              <div class="product-price-box">
-                <span class="current-price">PKR 6,899</span>
-                <span class="original-price">PKR 8,000</span>
-              </div>
-              <div class="product-colors">
-                <span class="color-dot" style="background-color: #3b2219;" title="Available Color"></span><span class="color-dot" style="background-color: #111111;" title="Available Color"></span><span class="color-dot" style="background-color: #a26e38;" title="Available Color"></span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-6 col-product-grid">
-
-          <div class="product-card">
-            <div class="product-img-wrap">
-              <div class="product-badges">
-                <span class="badge-sale">Sale</span>
-                <span class="badge-new">New</span>
-              </div>
-              <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1007">
-                <i class="bi bi-heart"></i>
-              </button>
-              <a href="product-details.php">
-                <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=800&auto=format&fit=crop" alt="Veloce Minimalist Court Sneaker" loading="lazy">
-              </a>
-              <div class="product-quick-actions">
-                <button class="quick-view-btn btn-quick-add" data-product-title="Veloce Minimalist Court Sneaker">
-                  <i class="bi bi-bag-plus me-1"></i> Quick Add
-                </button>
-              </div>
-            </div>
-            <div class="product-info">
-              <div class="product-category">Sneakers / Sports Shoes</div>
-              <h3 class="product-name">
-                <a href="product-details.php">Veloce Minimalist Court Sneaker</a>
-              </h3>
-              <div class="product-rating">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <span class="count">(67)</span>
-              </div>
-              <div class="product-price-box">
-                <span class="current-price">PKR 9,499</span>
-                <span class="original-price">PKR 11,000</span>
-              </div>
-              <div class="product-colors">
-                <span class="color-dot" style="background-color: #f5f5f5;" title="Available Color"></span><span class="color-dot" style="background-color: #141414;" title="Available Color"></span><span class="color-dot" style="background-color: #d7c4b7;" title="Available Color"></span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-6 col-product-grid">
-
-          <div class="product-card">
-            <div class="product-img-wrap">
-              <div class="product-badges">
-                <span class="badge-sale">Sale</span>
-                <span class="badge-new">New</span>
-              </div>
-              <button class="product-wishlist-btn" title="Add to Wishlist" data-product-id="NF-1010">
-                <i class="bi bi-heart"></i>
-              </button>
-              <a href="product-details.php">
-                <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=800&auto=format&fit=crop" alt="Amalfi Velour Suede Loafer" loading="lazy">
-              </a>
-              <div class="product-quick-actions">
-                <button class="quick-view-btn btn-quick-add" data-product-title="Amalfi Velour Suede Loafer">
-                  <i class="bi bi-bag-plus me-1"></i> Quick Add
-                </button>
-              </div>
-            </div>
-            <div class="product-info">
-              <div class="product-category">Loafers</div>
-              <h3 class="product-name">
-                <a href="product-details.php">Amalfi Velour Suede Loafer</a>
-              </h3>
-              <div class="product-rating">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <span class="count">(26)</span>
-              </div>
-              <div class="product-price-box">
-                <span class="current-price">PKR 11,999</span>
-                <span class="original-price">PKR 13,500</span>
-              </div>
-              <div class="product-colors">
-                <span class="color-dot" style="background-color: #3b4959;" title="Available Color"></span><span class="color-dot" style="background-color: #b39474;" title="Available Color"></span><span class="color-dot" style="background-color: #504136;" title="Available Color"></span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
+        <?php } ?>
       </div>
     </div>
   </section>
