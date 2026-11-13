@@ -30,8 +30,15 @@ $result3 = mysqli_query($conn, $q3);
 $new_arrivals = mysqli_fetch_all($result3, MYSQLI_ASSOC);
 
 
+// new arrival products
+$q4 = "SELECT * FROM `website_content`";
+
+$result4 = mysqli_query($conn, $q4);
+$cms_data = mysqli_fetch_assoc($result4);
+
+
 // echo "<pre>";
-// print_r($new_arrivals);
+// print_r($cms_data);
 // echo "</pre>";
 // exit;
 
@@ -46,10 +53,10 @@ $new_arrivals = mysqli_fetch_all($result3, MYSQLI_ASSOC);
       <div class="row align-items-center">
         <div class="col-lg-7">
           <div class="hero-content text-start">
-            <span class="hero-subtitle">Autumn / Winter 2026 Collection</span>
-            <h1 class="hero-title font-editorial">Step Into Uncompromising Refinement.</h1>
+            <span class="hero-subtitle"><?php echo $cms_data['hero_subtitle'] ?></span>
+            <h1 class="hero-title font-editorial"><?php echo $cms_data['hero_headline'] ?></h1>
             <p class="lead text-white-50 mb-4" style="max-width: 540px;">
-              Handcrafted from full-grain Italian calfskin and Goodyear-welted for generations of distinction. Engineered for the modern Pakistani gentleman.
+              <?php echo $cms_data['hero_lead'] ?>
             </p>
             <div class="d-flex flex-wrap gap-3 hero-buttons">
               <a href="shop.php" class="btn btn-nova-dark" style="background: #ffffff; color: #111; border-color: #fff;">
@@ -169,7 +176,7 @@ $new_arrivals = mysqli_fetch_all($result3, MYSQLI_ASSOC);
         <div class="col-lg-6">
           <div class="promo-content">
             <span class="badge bg-warning text-dark text-uppercase fw-bold px-3 py-1 mb-3">Seasonal Privilege</span>
-            <h2 class="display-6 fw-bold mb-3 font-editorial text-white">The Goodyear Welted Oxford Experience</h2>
+            <h2 class="display-6 fw-bold mb-3 font-editorial text-white"><?php echo $cms_data['promo_headline'] ?></h2>
             <p class="text-white-50 mb-4" style="line-height: 1.8;">
               Constructed with 200+ meticulous hand steps using durable closed-channel soles. Enjoy complimentary cedar shoe trees with every Black Label pair this season.
             </p>
